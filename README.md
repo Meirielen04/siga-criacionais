@@ -63,7 +63,7 @@ Siga as etapas da ficha de atividade prática:
 
 ## Critério de sucesso
 
-Ao final: É **impossível** combinar uma conexão de um fornecedor com um comando de outro; (b) a montagem da consulta está **legível**, com passos nomeados; e (c) existe **um único** ponto de acesso ao banco, obtido de forma controlada.
+Ao final: (a) é **impossível** combinar uma conexão de um fornecedor com um comando de outro; (b) a montagem da consulta está **legível**, com passos nomeados; e (c) existe **um único** ponto de acesso ao banco, obtido de forma controlada.
 
 ## Padrão de entrega
 
