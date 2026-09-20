@@ -27,6 +27,17 @@ package siga;
  */
 public class AcessoDados {
 
+    private static AcessoDados instancia;
+
+    private AcessoDados() {}
+
+    public static AcessoDados obterInstancia() {
+        if (instancia == null) {
+            instancia = new AcessoDados();
+        }
+        return instancia;
+    }
+
     // PROBLEMA 1: conexão e comando criados separadamente, sem garantia de coerência.
     public void conectar(FabricaBanco fabrica) {
         Conexao conexao = fabrica.criarConexao();

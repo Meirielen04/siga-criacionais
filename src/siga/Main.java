@@ -12,9 +12,9 @@ package siga;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("=== SIGA - Atividade de Padrões Criacionais (código inicial) ===\n");
+        System.out.println("=== SIGA - Atividade de Padrões Criacionais (código final) ===\n");
 
-        AcessoDados acesso = new AcessoDados();
+        AcessoDados acesso = AcessoDados.obterInstancia();
 
         FabricaBanco fabricaMySQL = new FabricaMySQL();
         acesso.conectar(fabricaMySQL);
