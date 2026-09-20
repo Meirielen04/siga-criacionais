@@ -28,16 +28,16 @@ package siga;
 public class AcessoDados {
 
     // PROBLEMA 1: conexão e comando criados separadamente, sem garantia de coerência.
-    public void conectar(String fornecedor) {
-        Conexao conexao;
-        Comando comando;
-        if (fornecedor.equals("MYSQL")) {
-            conexao = new ConexaoMySQL();
-            comando = new ComandoMySQL();
-        } else {
-            conexao = new ConexaoPostgreSQL();
-            comando = new ComandoPostgreSQL();
-        }
+    public void conectar(FabricaBanco fabrica) {
+        Conexao conexao = fabrica.criarConexao();
+        Comando comando = fabrica.criarComando();
+        // if (fornecedor.equals("MYSQL")) {
+        //     conexao = new ConexaoMySQL();
+        //     comando = new ComandoMySQL();
+        // } else {
+        //     conexao = new ConexaoPostgreSQL();
+        //     comando = new ComandoPostgreSQL();
+        // }
         // Nada impede o engano abaixo (fornecedores misturados):
         //   conexao = new ConexaoMySQL();
         //   comando = new ComandoPostgreSQL();  // <- incoerência não detectada!
