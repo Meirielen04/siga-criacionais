@@ -39,7 +39,7 @@ public class ConsultaBuilder {
     }
 
     public String construir() {
-      StringBuilder sb = new StringBuilder("SELECT * FROM ").append(tabela);
+        StringBuilder sb = new StringBuilder("SELECT * FROM ").append(tabela);
         if (filtro != null) sb.append(" WHERE ").append(filtro);
         if (somenteAtivos) sb.append(filtro != null ? " AND ativo = 1" : " WHERE ativo = 1");
         if (ordenacao != null) sb.append(" ORDER BY ").append(ordenacao);

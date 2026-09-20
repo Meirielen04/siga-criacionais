@@ -1,13 +1,13 @@
 package siga;
 
 public class FabricaMySQL implements FabricaBanco {
-    
-    @Override 
+
+    @Override
     public Conexao criarConexao() {
         return new ConexaoMySQL();
     }
 
-    @Override 
+    @Override
     public Comando criarComando() {
         return new ComandoMySQL();
     }

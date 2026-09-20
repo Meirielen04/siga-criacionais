@@ -1,12 +1,12 @@
 package siga;
 
 public class FabricaPostgreSQL implements FabricaBanco {
-    @Override 
+    @Override
     public Conexao criarConexao() {
         return new ConexaoPostgreSQL();
     }
 
-    @Override 
+    @Override
     public Comando criarComando() {
         return new ComandoPostgreSQL();
     }

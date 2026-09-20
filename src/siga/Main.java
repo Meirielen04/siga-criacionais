@@ -23,21 +23,19 @@ public class Main {
         FabricaBanco fabricaPostgres = new FabricaPostgreSQL();
         acesso.conectar(fabricaPostgres);
         System.out.println();
-        
 
         System.out.println();
         // PROBLEMA 2 em ação: o que significa cada número nesta chamada?
         // String consulta = acesso.montarConsulta("aluno", "curso = 'DSM'", "nome",
         //         50, 0, 30, true);
-        
         String consulta = new ConsultaBuilder()
-        .comTabela("aluno")
-        .comFiltro("curso = 'DSM'")
-        .comOrdenacao("nome")
-        .comLimite(50)
-        .comOffset(0)
-        .comAtivo(true)
-        .construir();
+                .comTabela("aluno")
+                .comFiltro("curso = 'DSM'")
+                .comOrdenacao("nome")
+                .comLimite(50)
+                .comOffset(0)
+                .comAtivo(true)
+                .construir();
         System.out.println("Consulta montada: " + consulta);
 
         // System.out.println("\nObserve: nada garante que conexão e comando sejam do mesmo");

@@ -2,7 +2,7 @@
 
 **Técnicas de Programação II (TP2) · Aula 6** — CST em Desenvolvimento de Software Multiplataforma · Fatec de Porto Ferreira
 
-Este é o **código inicial** da atividade prática da Aula 6. Ele contém, de forma **proposital**, três problemas de design que você deverá resolver aplicando, em conjunto, os padrões **Abstract Factory**, **Builder** e **Singleton**. O programa compila e executa — o problema não é o funcionamento, e sim a coerência, a legibilidade e o controle da criação de objetos.
+Este é o **código final** da atividade prática da Aula 6. Ele continha, de forma **proposital**, três problemas de design que foram resolvidos aplicando, em conjunto, os padrões **Abstract Factory**, **Builder** e **Singleton**. O programa compilava e executava — o problema não era o funcionamento, e sim a coerência, a legibilidade e o controle da criação de objetos.
 
 ## Estrutura do projeto
 
@@ -13,8 +13,12 @@ siga-criacionais/
         ├── Conexao.java              (interface — produto; pronta)
         ├── Comando.java              (interface — produto; pronta)
         ├── ObjetosAcessoDados.java   (implementações MySQL e PostgreSQL; prontas)
-        ├── AcessoDados.java          (contém os três problemas a refatorar)
-        └── Main.java                 (demonstra os problemas em execução)
+        ├── FabricaBanco.java         (interface — Abstract Factory)
+        ├── FabricaMySQL.java         (fábrica concreta — fornecedor MySQL)
+        ├── FabricaPostgreSQL.java    (fábrica concreta — fornecedor PostgreSQL)
+        ├── ConsultaBuilder.java      (Builder da consulta, substitui o método telescópico)
+        ├── AcessoDados.java          (Singleton; ponto único de acesso ao banco)
+        └── Main.java                 (demonstra a solução em execução)
 ```
 
 ## Como compilar e executar
@@ -37,7 +41,17 @@ java -cp bin siga.Main
 | `AcessoDados.montarConsulta` | Método com muitos parâmetros opcionais (construtor telescópico), ilegível e propenso a erro de ordem. | **Builder** |
 | `AcessoDados` | Nada garante um único ponto de acesso ao banco no sistema. | **Singleton** |
 
-## Sua tarefa
+## Como cada problema foi resolvido
+
+Pra mistura de fornecedores, criei a interface `FabricaBanco` e as fábricas `FabricaMySQL` e `FabricaPostgreSQL`, cada uma só conhecendo as classes do seu próprio fornecedor. O `conectar` agora recebe uma fábrica pronta em vez de decidir com `if/else`.
+
+Pro construtor telescópico, criei o `ConsultaBuilder`, com um método nomeado pra cada parâmetro opcional (`comFiltro`, `comLimite` etc.), encadeáveis, e um `construir()` no final. O método antigo ficou comentado em `AcessoDados.java`.
+
+Pra instância não controlada, o `AcessoDados` virou Singleton: construtor privado, atributo estático e o `obterInstancia()` como único jeito de conseguir o objeto.
+
+Diagrama de classes da solução: [`diagrama-uml.md`](diagrama-uml.md).
+
+## Tarefas realizadas
 
 Siga as etapas da ficha de atividade prática:
 
@@ -49,7 +63,7 @@ Siga as etapas da ficha de atividade prática:
 
 ## Critério de sucesso
 
-Ao final: (a) deve ser **impossível** combinar uma conexão de um fornecedor com um comando de outro; (b) a montagem da consulta deve ser **legível**, com passos nomeados; e (c) deve existir **um único** ponto de acesso ao banco, obtido de forma controlada.
+Ao final: É **impossível** combinar uma conexão de um fornecedor com um comando de outro; (b) a montagem da consulta está **legível**, com passos nomeados; e (c) existe **um único** ponto de acesso ao banco, obtido de forma controlada.
 
 ## Padrão de entrega
 
