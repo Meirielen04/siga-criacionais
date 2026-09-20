@@ -1,4 +1,4 @@
-# SIGA — Atividade de Padrões Criacionais (código inicial)
+# SIGA — Atividade de Padrões Criacionais (código final)
 
 **Técnicas de Programação II (TP2) · Aula 6** — CST em Desenvolvimento de Software Multiplataforma · Fatec de Porto Ferreira
 
